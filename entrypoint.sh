@@ -19,5 +19,5 @@ mv kubectl /usr/local/bin
 # Extract the base64 encoded config data and write this to the KUBECONFIG
 echo "$config" | base64 -d > /tmp/config
 export KUBECONFIG=/tmp/config
-
+aws --version
 sh -c "kubectl $command"
