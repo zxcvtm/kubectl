@@ -15,6 +15,13 @@ RUN apk add --no-cache curl
 
 COPY LICENSE README.md /
 COPY entrypoint.sh /entrypoint.sh
+RUN apk add --no-cache \
+        python3 \
+        py3-pip \
+    && pip3 install --upgrade pip \
+    && pip3 install --no-cache-dir \
+        awscli \
+    && rm -rf /var/cache/apk/*
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["help"]
